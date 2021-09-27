@@ -34,16 +34,16 @@ router.get("/", (req, res) => {
   const promise = Director.aggregate([
     {
       $lookup: {
-        from: "movies", //director tablosu nereyle join edilicegini yazdik
-        localField: "_id", //director tablosunda neyle eslestirceksin id ile
-        foreignField: "director_id", //movies collection da neyle eslesicek
+        from: "movies", 
+        localField: "_id", 
+        foreignField: "director_id", 
         as: "movies",
       },
     },
     {
       $unwind: {
         path: "$movies",
-        preserveNullAndEmptyArrays: true, //filmi olmayan yonetmenleride gosteriir
+        preserveNullAndEmptyArrays: true, 
       },
     },
     {
@@ -78,16 +78,16 @@ router.get("/:director_id", (req, res) => {
     },
     {
       $lookup: {
-        from: "movies", //director tablosu nereyle join edilicegini yazdik
-        localField: "_id", //director tablosunda neyle eslestirceksin id ile
-        foreignField: "director_id", //movies collection da neyle eslesicek
+        from: "movies", 
+        localField: "_id", 
+        foreignField: "director_id", 
         as: "movies",
       },
     },
     {
       $unwind: {
         path: "$movies",
-        preserveNullAndEmptyArrays: true, //filmi olmayan yonetmenleride gosteriir
+        preserveNullAndEmptyArrays: true, 
       },
     },
     {
